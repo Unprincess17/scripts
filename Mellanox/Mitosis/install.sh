@@ -23,7 +23,7 @@ wget https://content.mellanox.com/ofed/MLNX_OFED-4.9-0.1.7.0/MLNX_OFED_SRC-debia
 git clone https://github.com/SJTU-IPADS/krcore-artifacts --recursive && \
 git checkout atc22-artifacts  && \
 cd krcore-artifacts/mlnx-ofed-4.9-driver && \
-tar zxf MLNX_OFED_LINUX-4.9-3.1.5.0-ubuntu18.04-x86_64.tgz
-cd MLNX_OFED_LINUX-4.9-3.1.5.0-ubuntu18.04-x86_64
+tar zxf MLNX_OFED_LINUX-4.9-3.1.5.0-ubuntu18.04-x86_64.tgz && \
+cd MLNX_OFED_LINUX-4.9-3.1.5.0-ubuntu18.04-x86_64 
 # sudo ./mlnxofedinstall
 # sudo /etc/init.d/openibd restart

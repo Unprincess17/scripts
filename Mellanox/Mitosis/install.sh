@@ -32,7 +32,7 @@ cd MLNX_OFED_LINUX-4.9-3.1.5.0-ubuntu18.04-x86_64 && \
 sudo ./mlnxofedinstall && \
 sudo /etc/init.d/openibd restart
 
-cp MLNX_OFED_SRC-4.9-0.1.7.0/SOURCES/mlnx-ofed-kernel_4.9.orig.tar.gz ~/krcore-artifacts/mlnx-ofed-4.9-driver && \
+cp MLNX_OFED_SRC-4.9-3.1.5.0/SOURCES/mlnx-ofed-kernel_4.9.orig.tar.gz ~/krcore-artifacts/mlnx-ofed-4.9-driver && \
 cd ~/krcore-artifacts/mlnx-ofed-4.9-driver && \
 tar -zxvf mlnx-ofed-kernel_4.9.orig.tar.gz && \
 cd mlnx-ofed-kernel-4.9/ && \

@@ -1,7 +1,9 @@
 #!/bin/bash
 sudo apt update && \
-sudo apt install -y linux-image-4.15.0-46-generic linux-headers-4.15.0-46-generic linux-modules-extra-4.15.0-46-generic && \
-sudo update-grub 
+sudo apt install -y linux-image-4.15.0-46-generic linux-headers-4.15.0-46-generic linux-modules-extra-4.15.0-46-generic dpkg-dev && \
+sudo sed -i "s/GRUB_DEFAULT=0/GRUB_DEFAULT=\"Advanced options for Ubuntu>Ubuntu, with Linux 4.15.0-46-generic\"/" /etc/default/grub && \
+sudo update-grub && \
+sudo reboot
 
 # # change the GRUB_DEFAULT in /etc/default/grub as
 # ##    GRUB_DEFAULT="Advanced options for Ubuntu>Ubuntu, with Linux 4.15.0-46-generic"
@@ -19,11 +21,20 @@ rustup component add rust-src
 rustup toolchain list
 
 wget https://www.mellanox.com/downloads/ofed/MLNX_OFED-4.9-3.1.5.0/MLNX_OFED_LINUX-4.9-3.1.5.0-ubuntu18.04-x86_64.tgz && \
-wget https://content.mellanox.com/ofed/MLNX_OFED-4.9-0.1.7.0/MLNX_OFED_SRC-debian-4.9-0.1.7.0.tgz && \
-git clone https://github.com/SJTU-IPADS/krcore-artifacts --recursive && \
-git checkout atc22-artifacts  && \
-cd krcore-artifacts/mlnx-ofed-4.9-driver && \
+wget https://www.mellanox.com/downloads/ofed/MLNX_OFED-4.9-3.1.5.0/MLNX_OFED_SRC-debian-4.9-3.1.5.0.tgz && \
+
 tar zxf MLNX_OFED_LINUX-4.9-3.1.5.0-ubuntu18.04-x86_64.tgz && \
-cd MLNX_OFED_LINUX-4.9-3.1.5.0-ubuntu18.04-x86_64 
-# sudo ./mlnxofedinstall
-# sudo /etc/init.d/openibd restart
+tar -zxvf MLNX_OFED_SRC-debian-4.9-3.1.5.0.tgz && \
+git clone https://github.com/SJTU-IPADS/krcore-artifacts --recursive && \
+# git checkout atc22-artifacts  && \
+# cd krcore-artifacts/mlnx-ofed-4.9-driver && \
+cd MLNX_OFED_LINUX-4.9-3.1.5.0-ubuntu18.04-x86_64 && \
+sudo ./mlnxofedinstall && \
+sudo /etc/init.d/openibd restart
+
+cp MLNX_OFED_SRC-4.9-0.1.7.0/SOURCES/mlnx-ofed-kernel_4.9.orig.tar.gz ~/krcore-artifacts/mlnx-ofed-4.9-driver && \
+cd ~/krcore-artifacts/mlnx-ofed-4.9-driver && \
+tar -zxvf mlnx-ofed-kernel_4.9.orig.tar.gz && \
+cd mlnx-ofed-kernel-4.9/ && \
+cp -r ~/krcore-artifacts/mlnx-ofed-4.9-driver/drivers/* ./drivers/ && \
+cp -r ~/krcore-artifacts/mlnx-ofed-4.9-driver/include/* ./include/

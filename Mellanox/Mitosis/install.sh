@@ -9,9 +9,9 @@ sudo reboot
 # ##    GRUB_DEFAULT="Advanced options for Ubuntu>Ubuntu, with Linux 4.15.0-46-generic"
 # sudo vi /etc/default/grub
 
-wget https://apt.llvm.org/llvm.sh && \
-chmod +x llvm.sh && \
-sudo ./llvm.sh 9
+wget https://releases.llvm.org/9.0.0/clang+llvm-9.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz
+tar -xvf clang+llvm-9.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz
+mv clang+llvm-9.0.0-x86_64-linux-gnu-ubuntu-18.04 clang-9
 
 curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh && \
 source $HOME/.cargo/env && \
@@ -38,3 +38,17 @@ tar -zxvf mlnx-ofed-kernel_4.9.orig.tar.gz && \
 cd mlnx-ofed-kernel-4.9/ && \
 cp -r ~/krcore-artifacts/mlnx-ofed-4.9-driver/drivers/* ./drivers/ && \
 cp -r ~/krcore-artifacts/mlnx-ofed-4.9-driver/include/* ./include/
+
+
+# remember to modify ~/.bashrc
+vim ~/.bashrc
+<<EOF
+CLANG_HOME=~/clang-9
+PATH=$CLANG_HOME/bin:$PATH
+
+And comment these lines
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+EOF

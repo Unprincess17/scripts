@@ -25,9 +25,10 @@ wget https://www.mellanox.com/downloads/ofed/MLNX_OFED-4.9-3.1.5.0/MLNX_OFED_SRC
 
 tar zxf MLNX_OFED_LINUX-4.9-3.1.5.0-ubuntu18.04-x86_64.tgz && \
 tar -zxvf MLNX_OFED_SRC-debian-4.9-3.1.5.0.tgz && \
-git clone https://github.com/Unprincess17/krcore-artifacts.git --recursive && \
+git clone https://github.com/Unprincess17/krcore-artifacts.git && \
 cd krcore-artifacts && \
 git checkout atc22-artifacts  && \
+./git_init.sh && \
 # cd krcore-artifacts/mlnx-ofed-4.9-driver && \
 cd MLNX_OFED_LINUX-4.9-3.1.5.0-ubuntu18.04-x86_64 && \
 sudo ./mlnxofedinstall && \

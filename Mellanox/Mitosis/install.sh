@@ -30,8 +30,8 @@ cd krcore-artifacts && \
 git checkout atc22-artifacts  && \
 ./git_init.sh && \
 # cd krcore-artifacts/mlnx-ofed-4.9-driver && \
-cd MLNX_OFED_LINUX-4.9-3.1.5.0-ubuntu18.04-x86_64 && \
-sudo ./mlnxofedinstall && \
+cd ~/MLNX_OFED_LINUX-4.9-3.1.5.0-ubuntu18.04-x86_64 && \
+sudo ./mlnxofedinstall -y && \
 sudo /etc/init.d/openibd restart
 
 

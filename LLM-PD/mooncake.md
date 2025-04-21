@@ -12,11 +12,13 @@ apt-get install -y build-essential \
 cd ~ && \
 git clone https://gitcode.com/gh_mirrors/et/etcd-cpp-apiv3.git && \
 cd etcd-cpp-apiv3 && \
-apt-get install libboost-all-dev libssl-dev \
+apt-get install -y libboost-all-dev libssl-dev \
         libgrpc-dev \
         libgrpc++-dev \
         libprotobuf-dev \
-        protobuf-compiler-grpc
+        protobuf-compiler-grpc \
+        libcpprest-dev && \
+mkdir build && cd build && cmake .. && make
 
 
 cd ~ && \
